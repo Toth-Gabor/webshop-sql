@@ -1,3 +1,16 @@
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
 drop table if exists order_details;
 drop table if exists customers;
 drop table if exists products;
@@ -110,8 +123,8 @@ INSERT INTO products VALUES (15, 'Genen Shouyu', 6, 2, '24 - 250 ml bottles', 13
 alter table only customers
 	add constraint pk_customers primary key (customer_id);
 	
-alter table only order_details
-	add constraint pk_order_details primary key (order_id, product_id);
+ALTER TABLE ONLY order_details
+    ADD CONSTRAINT pk_order_details PRIMARY KEY (order_id, product_id);
 
 alter table only orders
 	add constraint pk_orders primary key (order_id);
@@ -127,6 +140,6 @@ alter table only order_details
 
 ALTER TABLE ONLY order_details
     ADD CONSTRAINT fk_order_details_orders FOREIGN KEY (order_id) REFERENCES orders;
+    
    
    
-
